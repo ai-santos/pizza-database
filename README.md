@@ -25,7 +25,7 @@ Piccadilly wants its system to:
 - [ ] Track standard **drinks**, including a product ID, drink description, manufacturer, supplier, price
 - [ ] Support calculating the proper sales tax (the pizza joint located at the intersection of the four corners of the US, so you might have to support sales taxes for Colorado, Arizona, New Mexico and Utah)
 - [ ] Track its **pizza** sizes (small, medium, large, extra large), types (thick or thin crust), **ingredients** (pepperoni, sausage, mushrooms, onions, cheese, etc.), price data for these pizza sizes and ingredients, and happy hour price discounts.
-- [ ] Maintain a history of **transactions** - all purchases including price, payment method, and delivery date.
+
 
 HINT: if you see an item in bold, you may want to consider creating a table for that item. :)
 
