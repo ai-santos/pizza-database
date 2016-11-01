@@ -1,5 +1,7 @@
 ## Description
 
+![Alt text](./public/images/pizza_schema.png)
+
 Piccadilly Pizza is a diamond in the rough: their deep dish is the bomb dot com, but they're just breaking even because they lack the easy-to-use online ordering interface that will give them a competitive edge.
 
 Your job is to design a schema based on the guidelines Piccadilly Pizza has provided, complete with a programmatic component that allows for basic to CRUD operations on the data.
