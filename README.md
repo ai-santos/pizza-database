@@ -1,6 +1,6 @@
 ## Description
 
-![Alt text](src/public/images/pizzadb_schema.png)
+![Alt text](src/public/images/pizzadb-schema.png)
 
 Piccadilly Pizza is a diamond in the rough: their deep dish is the bomb dot com, but they're just breaking even because they lack the easy-to-use online ordering interface that will give them a competitive edge.
 
