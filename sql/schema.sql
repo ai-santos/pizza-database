@@ -31,8 +31,8 @@ CREATE TABLE "customer_credit_cards" (
 CREATE TABLE "pizzas" (
 "id"  SERIAL NOT NULL,
 "size" VARCHAR(2) ,
-"topping_1" VARCHAR(10) ,
-"topping_2" VARCHAR(10) ,
+"topping_1" VARCHAR(10) DEFAULT 'None',
+"topping_2" VARCHAR(10) DEFAULT 'None',
 PRIMARY KEY ("id")
 );
 
