@@ -34,7 +34,7 @@ CREATE TABLE "customer_order_preference" (
 );
 
 CREATE TABLE "drinks" (
-"name"  SERIAL ,
+"name"  VARCHAR(15),
 "price" MONEY ,
 PRIMARY KEY ("name")
 );
@@ -59,7 +59,7 @@ PRIMARY KEY ("name")
 
 CREATE TABLE "customer_drinks" (
 "customer_order_id"  SERIAL ,
-"drink" INTEGER
+"drink" VARCHAR(15)
 );
 
 CREATE TABLE "sizes" (
