@@ -1,0 +1,30 @@
+LOG:  database system was shut down at 2016-11-02 08:52:22 PDT
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+ERROR:  database "pizza-database" does not exist
+STATEMENT:  DROP DATABASE "pizza-database";
+ERROR:  insert or update on table "pizzas" violates foreign key constraint "pizzas_topping_1_fkey"
+DETAIL:  Key (topping_1)=(per) is not present in table "toppings".
+STATEMENT:  insert into "pizzas" ("size", "topping_1", "topping_2") values ($1, $2, $3)
+ERROR:  database "pizza-database" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE "pizza-database";
+ERROR:  foreign key constraint "pizzas_size_fkey" cannot be implemented
+DETAIL:  Key columns "size" and "name" are of incompatible types: character varying and integer.
+STATEMENT:  ALTER TABLE "pizzas" ADD FOREIGN KEY ("size") REFERENCES "sizes" ("name");
+ERROR:  column "pepperonni" does not exist at character 40
+STATEMENT:  INSERT INTO toppings ( name ) VALUES ( "pepperonni" )
+ERROR:  invalid input syntax for integer: "pepperonni" at character 40
+STATEMENT:  INSERT INTO toppings ( name ) VALUES ( 'pepperonni' )
+ERROR:  foreign key constraint "pizzas_topping_1_fkey" cannot be implemented
+DETAIL:  Key columns "topping_1" and "name" are of incompatible types: integer and character varying.
+STATEMENT:  ALTER TABLE "pizzas" ADD FOREIGN KEY ("topping_1") REFERENCES "toppings" ("name");
+ERROR:  foreign key constraint "pizzas_topping_2_fkey" cannot be implemented
+DETAIL:  Key columns "topping_2" and "name" are of incompatible types: integer and character varying.
+STATEMENT:  ALTER TABLE "pizzas" ADD FOREIGN KEY ("topping_2") REFERENCES "toppings" ("name");
+ERROR:  column "customer_id" of relation "customer_pizzas" does not exist at character 31
+STATEMENT:  INSERT INTO customer_pizzas ( customer_id, pizza_id ) VALUES ( 1, 1 ) RETURNING *
+ERROR:  missing FROM-clause entry for table "pizzas" at character 23
+STATEMENT:  SELECT customer.name, pizzas.* FROM customer JOIN customer_order ON customer.id = customer_order.customer_id
+	JOIN customer_pizzas ON customer_order.id = customer_pizzas.customer_order_id
