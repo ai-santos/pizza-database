@@ -10,7 +10,7 @@ var router = _express2.default.Router();
 
 /*Static files*/
 router.get('/', function (request, response) {
-  response.send('hello world');
+  response.render('index');
 });
 
-module.export = router;
+module.exports = router;

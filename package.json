@@ -2,7 +2,7 @@
   "name": "pizza-database",
   "version": "1.0.0",
   "description": "pizza database",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "build": "babel --copy-files src --out-dir dist",
     "build:watch": "npm run build -- --watch",
@@ -24,5 +24,11 @@
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.0",
     "babel-preset-es2015": "^6.18.0"
+  },
+  "devDependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "path": "^0.12.7",
+    "pug": "^2.0.0-beta6"
   }
 }

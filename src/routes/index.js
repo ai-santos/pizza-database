@@ -4,7 +4,7 @@ const router = express.Router()
 
 /*Static files*/
 router.get('/', (request, response) => {
-  response.send('hello world')
+  response.render('index')
 })
 
-module.export = router
+module.exports = router
