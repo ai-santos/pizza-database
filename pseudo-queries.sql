@@ -1,8 +1,6 @@
 
-
-/*
   Queries for CRUD on the toppings table
-  */
+
 
 // insert topping
 INSERT INTO toppings ( name ) VALUES ( 'pepperonni' ) RETURNING name;
@@ -19,11 +17,10 @@ UPDATE toppings SET name='pepperonni' WHERE name = 'sausage' RETURNING name;
 DELETE FROM toppings WHERE name = 'pepperonni';
 
 
-/* Knex conversion of queries above */
+ Knex conversion of queries above
 
 // insert new topping
 knex('toppings').returning(name).insert({ name: 'pepperonni' })
-
 
 // select topping(s)
 knex('toppings').select()
@@ -39,9 +36,7 @@ knex('toppings').where({ name: 'pepperonni' }).del();
 
 
 
-/*
   Queries to CRUD sizes
- */
 
 //insert a size
 INSERT INTO sizes ( name, price ) VALUES ( 'S', 10 ) RETURNING (SELECT * FROM sizes);
