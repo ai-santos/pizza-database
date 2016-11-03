@@ -1,30 +1,36 @@
 'use strict';
 
-var _express = require('express');
+// import express from 'express'
+// import Topping from '../database/toppings'
+// import Size from '../database/sizes'
 
-var _express2 = _interopRequireDefault(_express);
+var express = require('express');
+var Pizza = require('../database/pizzas');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//import Topping from '../ian-queries'
-
-var Topping = require('../ian-queries');
-
-//const { Topping } = require('../ian-queries')
-
-
-var router = _express2.default.Router();
+var router = express.Router();
 
 /*Static files*/
 router.get('/', function (request, response, next) {
   response.render('index');
 });
 
-router.get('/toppings', Topping.getAll);
+router.post('/toppings', Pizza.topping.add);
+router.get('/toppings', Pizza.topping.getAll);
+router.get('/toppings/:name', Pizza.topping.getOne);
+router.put('/toppings/:name', Pizza.topping.update);
+router.delete('/toppings/:name', Pizza.topping.delete);
 
-// router.get('/toppings', ( request, response, next ) =>{
-//   response.send("yo")
-// })
+router.post('/sizes', Pizza.size.add);
+router.get('/sizes', Pizza.size.getAll);
+router.get('/sizes/:option', Pizza.size.getOne);
+router.put('/sizes/:name', Pizza.size.update);
+router.delete('/sizes/:name', Pizza.size.delete);
 
+router.post('/pizzas', Pizza.add);
+router.get('/pizzas', Pizza.getAll);
+router.get('/pizzas/:id', Pizza.getOne);
+router.put('/pizzas/:id', Pizza.update);
+router.delete('/pizzas/:id', Pizza.delete);
 
 module.exports = router;
+// export { router }

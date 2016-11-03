@@ -1,3 +1,4 @@
+// import db from './main'
 const db = require('./main')
 
 const Size = {
@@ -10,7 +11,7 @@ const Size = {
   },
 
   getAll: ( request, response, next ) => {
-    db('sizes').select()
+    db('sizes').select().orderBy( "price", "asc")
     .then( data => {
       response.status(200)
       .json({
@@ -23,23 +24,39 @@ const Size = {
   },
 
   getOne: ( request, response, next ) => {
-    const { name, price } = request.body
-    db('sizes').select().where({ name: name } || { price: price })
-    .then( data => {
-      response.status(200)
-      .json({
-              status: 'success',
-              data:data,
-              message: 'Retrived one pizza size.'
-            })
-    })
-    .catch( error => next( error ))
+    const { option } = request.params
+    //( typeof option == 'string' ) ? db('sizes').select().where({ name: option }) : db('sizes').select().where({ price: price })
+    if ( isNaN(option) ) {
+      db('sizes').select().where({ name: option })
+      .then( data => {
+        response.status(200)
+        .json({
+                status: 'success',
+                data:data,
+                message: 'Retrived one pizza size by name.'
+              })
+      })
+      .catch( error => next( error ))
+    } else {
+      const name = option.toUpperCase()
+      console.log(name)
+      db('sizes').select().where({ price: name })
+      .then( data => {
+        response.status(200)
+        .json({
+                status: 'success',
+                data:data,
+                message: 'Retrived one pizza size by price.'
+              })
+      })
+      .catch( error => next( error ))
+    }
  },
 
   update: ( request, response, next ) => {
     const { name, price } = request.params
     const { new_name, new_price } = request.body
-    db('sizes').where({ name: name, price: price }).update({ name: new_name, price: new_price })
+    db('sizes').where({ name: name }).update({ name: new_name, price: new_price })
     .then( response.status(200)
             .json({
                     status: 'success',
@@ -47,9 +64,10 @@ const Size = {
                   }))
     .catch( error => next( error ))
   },
+
   delete: ( request, response, next ) => {
     const { name, price } = request.params
-    db('sizes').where({ name:name } || { price:price }).del()
+    db('sizes').where({ name:name }).del()
     .then( response.status(200)
               .json({
                       status: 'success',
@@ -60,3 +78,4 @@ const Size = {
 }
 
 module.exports = Size
+// export Size
