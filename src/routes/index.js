@@ -4,6 +4,7 @@
 
 const express = require('express')
 const Pizza = require('../database/pizzas')
+const Drink = require('../database/drinks')
 
 const router = express.Router()
 
@@ -29,6 +30,13 @@ router.get( '/pizzas', Pizza.getAll )
 router.get( '/pizzas/:id', Pizza.getOne )
 router.put( '/pizzas/:id', Pizza.update )
 router.delete( '/pizzas/:id', Pizza.delete )
+
+router.post( '/drinks', Drink.add )
+router.get( '/drinks', Drink.getAll )
+router.get( '/drinks/:name', Drink.getOne )
+router.put( '/drinks/:name', Drink.update )
+router.delete( '/drinks/:name', Drink.delete )
+
 
 module.exports = router
 // export { router }

@@ -35,6 +35,15 @@ const Pizza = {
   getOne: ( request, response, next ) => {
     const { id } = request.params
     db('pizzas').select().where({ id: id })
+    .then( data => {
+      response.status(200)
+      .json({
+              status: 'success',
+              data: data,
+              message: 'Retrieved specfied pizza by ID.'
+            })
+    })
+    .catch( error => next( error))
   },
 
   update: ( request, response, next ) => {
