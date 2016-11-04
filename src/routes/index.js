@@ -12,25 +12,28 @@ const router = express.Router()
 router.get('/', (request, response, next) => {
   response.render('index')
 })
-
+/* Topping API routes */
 router.post( '/toppings', Pizza.topping.add )
 router.get( '/toppings', Pizza.topping.getAll )
 router.get( '/toppings/:name', Pizza.topping.getOne )
 router.put('/toppings/:name', Pizza.topping.update )
 router.delete( '/toppings/:name', Pizza.topping.delete )
 
+/* Size API routes */
 router.post( '/sizes', Pizza.size.add )
 router.get( '/sizes', Pizza.size.getAll )
 router.get( '/sizes/:option', Pizza.size.getOne )
 router.put( '/sizes/:name', Pizza.size.update )
 router.delete( '/sizes/:name', Pizza.size.delete )
 
+/* Pizza API routes */
 router.post( '/pizzas', Pizza.add )
 router.get( '/pizzas', Pizza.getAll )
 router.get( '/pizzas/:id', Pizza.getOne )
 router.put( '/pizzas/:id', Pizza.update )
 router.delete( '/pizzas/:id', Pizza.delete )
 
+/* Drink API routes */
 router.post( '/drinks', Drink.add )
 router.get( '/drinks', Drink.getAll )
 router.get( '/drinks/:name', Drink.getOne )
