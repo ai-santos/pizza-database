@@ -4,6 +4,37 @@ const Customer = {
 
   creditCard: require('./credit-cards'),
 
+  addCard: ( request, response, next ) => {
+    const { id } = request.params
+    const { card_id } = request.body
+    db('customer_credit_card').returning('*')
+                              .insert({ customer_id: id, credit_card_id: card_id })
+      .then( data => {
+        response.status( 200 )
+        .json({
+                status: 'success',
+                card: data,
+                message: 'Made connection for customer and credit card.'
+        })
+      })
+      .catch( error => next( error ))
+  },
+
+  getCards: ( request, response, next ) => {
+    const { id } = request.params
+    db.select('credit_card.number', 'credit_card.expiration').from('credit_card')
+                  .leftJoin('customer_credit_card', 'credit_card.id', 'customer_credit_card.credit_card_id')
+                  .where({ customer_id: id })
+    .then( data => {
+      response.status(200)
+      .json({
+              status: 'succes',
+              customer_cards: data,
+              message: 'Got all the cards this customers got.'
+            })
+     })
+  },
+
   add: ( request, response, next ) => {
     const { name, address, phone } = request.body
     db('customer').returning('*').insert({

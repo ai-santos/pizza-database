@@ -48,6 +48,10 @@ router.get( '/customer/:id', Customer.getOne )
 router.put( '/customer/:id', Customer.update )
 router.delete( '/customer/:id', Customer.delete )
 
+router.post( '/customer/:id/cards', Customer.addCard )
+
+router.get( '/customer/:id/cards', Customer.getCards )
+
 router.post( '/creditCard', Customer.creditCard.add )
 router.get( '/creditCard', Customer.creditCard.getAll )
 router.get( '/creditCard/:id', Customer.creditCard.getOne )
