@@ -1,8 +1,14 @@
-import express from 'express'
-import routes from './routes/index'
-import pug from 'pug'
-import path from 'path'
-import bodyParser from 'body-parser'
+// import express from 'express'
+// import routes from './routes/index'
+// import pug from 'pug'
+// import path from 'path'
+// import bodyParser from 'body-parser'
+
+const express = require('express')
+const routes = require('./routes/index')
+const pug = require('pug')
+const path = require('path')
+const bodyParser = require('body-parser')
 
 
 const server = express()
@@ -20,5 +26,3 @@ server.use(bodyParser.urlencoded({ extended: true }))
 server.use('/', routes)
 
 server.listen(process.env.PORT || 3000)
-
-

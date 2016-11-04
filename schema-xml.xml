@@ -58,7 +58,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="326" y="300" name="credit_card">
+<table x="330" y="305" name="credit_card">
 <row name="id" null="1" autoincrement="1">
 <datatype>SERIAL</datatype>
 <default>NULL</default></row>
@@ -66,7 +66,7 @@
 <datatype>VARCHAR(60)</datatype>
 <default>NULL</default></row>
 <row name="number" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>VARCHAR(20)</datatype>
 <default>NULL</default></row>
 <row name="expiration" null="1" autoincrement="0">
 <datatype>DATE</datatype>
@@ -120,7 +120,7 @@
 </table>
 <table x="869" y="47" name="drinks">
 <row name="name" null="1" autoincrement="1">
-<datatype>VARCHAR(10)</datatype>
+<datatype>VARCHAR(20)</datatype>
 <default>NULL</default></row>
 <row name="price" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -129,7 +129,7 @@
 <part>name</part>
 </key>
 </table>
-<table x="870" y="185" name="pizzas">
+<table x="889" y="195" name="pizzas">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -138,11 +138,11 @@
 <default>NULL</default><relation table="sizes" row="name" />
 </row>
 <row name="topping_1" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>VARCHAR(10)</datatype>
 <default>NULL</default><relation table="toppings" row="name" />
 </row>
 <row name="topping_2" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>VARCHAR(10)</datatype>
 <default>NULL</default><relation table="toppings" row="name" />
 </row>
 <key type="PRIMARY" name="">
@@ -173,7 +173,7 @@
 <default>NULL</default><relation table="customer_order" row="id" />
 </row>
 <row name="drink" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>VARCHAR(20)</datatype>
 <default>NULL</default><relation table="drinks" row="name" />
 </row>
 </table>

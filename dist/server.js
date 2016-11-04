@@ -1,38 +1,28 @@
 'use strict';
 
-var _express = require('express');
+// import express from 'express'
+// import routes from './routes/index'
+// import pug from 'pug'
+// import path from 'path'
+// import bodyParser from 'body-parser'
 
-var _express2 = _interopRequireDefault(_express);
+var express = require('express');
+var routes = require('./routes/index');
+var pug = require('pug');
+var path = require('path');
+var bodyParser = require('body-parser');
 
-var _index = require('./routes/index');
-
-var _index2 = _interopRequireDefault(_index);
-
-var _pug = require('pug');
-
-var _pug2 = _interopRequireDefault(_pug);
-
-var _path = require('path');
-
-var _path2 = _interopRequireDefault(_path);
-
-var _bodyParser = require('body-parser');
-
-var _bodyParser2 = _interopRequireDefault(_bodyParser);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var server = (0, _express2.default)();
+var server = express();
 
 //view engine setup
-server.set('views', _path2.default.join(__dirname, 'views'));
+server.set('views', path.join(__dirname, 'views'));
 server.set('view engine', 'pug');
 
 //middleware
-server.use('/', _express2.default.static(_path2.default.join(__dirname, 'public')));
-server.use(_bodyParser2.default.urlencoded({ extended: true }));
+server.use('/', express.static(path.join(__dirname, 'public')));
+server.use(bodyParser.urlencoded({ extended: true }));
 
 //routes
-server.use('/', _index2.default);
+server.use('/', routes);
 
 server.listen(process.env.PORT || 3000);
