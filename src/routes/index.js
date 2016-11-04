@@ -5,6 +5,7 @@
 const express = require('express')
 const Pizza = require('../database/pizzas')
 const Drink = require('../database/drinks')
+const Customer = require('../database/customers')
 
 const router = express.Router()
 
@@ -39,6 +40,20 @@ router.get( '/drinks', Drink.getAll )
 router.get( '/drinks/:name', Drink.getOne )
 router.put( '/drinks/:name', Drink.update )
 router.delete( '/drinks/:name', Drink.delete )
+
+/* Customer API routes */
+router.post( '/customer', Customer.add )
+router.get( '/customer', Customer.getAll )
+router.get( '/customer/:id', Customer.getOne )
+router.put( '/customer/:id', Customer.update )
+router.delete( '/customer/:id', Customer.delete )
+
+router.post( '/creditCard', Customer.creditCard.add )
+router.get( '/creditCard', Customer.creditCard.getAll )
+router.get( '/creditCard/:id', Customer.creditCard.getOne )
+router.put( '/creditCard/:id', Customer.creditCard.update )
+router.delete( '/creditCard/:id', Customer.creditCard.delete )
+
 
 
 module.exports = router

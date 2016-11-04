@@ -16,6 +16,7 @@ const Drink = {
     .catch( error => next( error ))
 
   },
+
   getAll: ( request, response, next ) => {
       db('drinks').select()
       .then( data => {
@@ -28,6 +29,7 @@ const Drink = {
       })
       .catch( error => next( error ))
   },
+
   getOne: ( request, response, next ) => {
     const { name } = request.params
     db('drinks').select().where({ name: name })
@@ -42,6 +44,7 @@ const Drink = {
     .catch()
 
   },
+  
   update: ( request, response, next ) => {
     const { name } = request.params
     const { new_name, new_price } = request.body
